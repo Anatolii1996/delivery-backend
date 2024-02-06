@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const userRouter = require("./routes/user-routes");
 
 const PORT = 3002;
 
@@ -10,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-// app.use(visitRouter, commentRouter,blockedRouter)
+app.use(userRouter)
 
 mongoose
     .connect(process.env.URL)
