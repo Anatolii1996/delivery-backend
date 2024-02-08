@@ -2,7 +2,7 @@ const User = require("../models/user");
 const { handleError } = require("../helper")
 
 const createUser = async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const user = new User(req.body);
     // console.log(visit)
     await user

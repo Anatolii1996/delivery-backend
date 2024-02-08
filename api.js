@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user-routes");
+const firstDishesRouter = require("./routes/firstDdish-router");
 
 const PORT = 3002;
 
@@ -11,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use(userRouter)
+app.use(userRouter, firstDishesRouter)
 
 mongoose
     .connect(process.env.URL)
