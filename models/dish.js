@@ -10,5 +10,6 @@ const dishSchema = new Schema({
 
 });
 
-const FirstDish = mongoose.model("Firstdish", dishSchema);
-module.exports = FirstDish;
+const FirstDish = mongoose.model("Firstdish", dishSchema, "firstDishes");
+const SecondDish = mongoose.model("Seconddish", dishSchema, "secondDishes");
+module.exports = {FirstDish, SecondDish};

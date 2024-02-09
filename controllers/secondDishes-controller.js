@@ -1,8 +1,8 @@
-const {FirstDish} = require("../models/dish");
+const {SecondDish} = require("../models/dish");
 const { handleError } = require("../helper")
 
-const getFirstDishes = async (req, res) => {
-    await FirstDish
+const getSecondDishes = async (req, res) => {
+    await SecondDish
         .distinct("meal")
         .then((visits) => {
             res.status(200)
@@ -13,4 +13,4 @@ const getFirstDishes = async (req, res) => {
 
 
 
-module.exports = { getFirstDishes };
+module.exports = { getSecondDishes };
