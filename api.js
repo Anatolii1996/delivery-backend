@@ -3,9 +3,11 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+
 const userRouter = require("./routes/user-routes");
 const firstDishesRouter = require("./routes/firstDish-router");
 const secondDishesRouter = require("./routes/secondDish-router");
+const sideDishesRouter = require("./routes/sideDish-router");
 
 const PORT = 3002;
 
@@ -13,7 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-app.use(userRouter, firstDishesRouter, secondDishesRouter)
+app.use(userRouter, firstDishesRouter, secondDishesRouter, sideDishesRouter)
 
 mongoose
     .connect(process.env.URL)
