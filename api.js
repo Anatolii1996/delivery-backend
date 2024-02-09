@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const userRouter = require("./routes/user-routes");
-const firstDishesRouter = require("./routes/firstDdish-router");
+const firstDishesRouter = require("./routes/firstDish-router");
 
 const PORT = 3002;
 
