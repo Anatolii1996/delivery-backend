@@ -6,9 +6,7 @@ const dishSchema = new Schema({
         type: String,
         required: true
     },
-    image: Buffer
- 
-
+    image: String,
 });
 
 const FirstDish = mongoose.model("FirstDish", dishSchema, "firstDishes");
