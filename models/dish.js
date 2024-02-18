@@ -6,6 +6,7 @@ const dishSchema = new Schema({
         type: String,
         required: true
     },
+    image: Buffer
  
 
 });
