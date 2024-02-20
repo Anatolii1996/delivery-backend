@@ -3,17 +3,41 @@ const Schema = mongoose.Schema;
 const menuSchema = new Schema({
 
     menu1: {
-        firstDish: String,
-        secondDish: String,
-        sideDish: String,
-        salad: String,
-        bread: String
+        firstDish:{
+            meal: String,
+            image:String
+        } ,
+        secondDish: {
+            meal: String,
+            image:String
+        } ,
+        sideDish: {
+            meal: String,
+            image:String
+        } ,
+        salad: {
+            meal: String,
+            image:String
+        } ,
+        bread: {
+            meal: String,
+            image:String
+        } 
     },
     menu2: {
-        mainDish: String,
-        dessert: String
+        mainDish: {
+            meal: String,
+            image:String
+        } ,
+        dessert: {
+            meal: String,
+            image:String
+        } 
     },
-    dessert: String,
+    bigDessert: {
+            meal: String,
+            image:String
+        } ,
     date: String,
     
 });
