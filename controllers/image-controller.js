@@ -1,11 +1,11 @@
-// const {FirstDish, SecondDish, SideDish, Salad , Dessert } = require("../models/dish")
+// const {FirstDish, SecondDish, SideDish, Salad , Dessert, Bread } = require("../models/dish")
 
 // const uploadImage = async (req, res) => {
 //     const { name, base64 } = req.body;
 //     console.log(name)
 //     // console.log(base64)
 //     try {
-//         Dessert
+//         Bread
 //         .create({
 //             meal: name,
 //             image: base64
