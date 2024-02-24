@@ -15,6 +15,7 @@ const getDalyMeny = async (req, res) => {
 };
 
 const updateDalyMeny = async (req, res) => {
+       
     try {
         const firstDish = req.body.firstDish
         const secondDish = req.body.secondDish
@@ -26,14 +27,13 @@ const updateDalyMeny = async (req, res) => {
 
         const firstDaly = await FirstDish.findOne({ meal: firstDish })
 
-        // console.log(firstDaly)
         const secondDaly = await SecondDish.findOne({ meal: secondDish })
         const sideDaly = await SideDish.findOne({ meal: sideDish })
         const saladDaly = await Salad.findOne({ meal: salad })
         const mainDaly = await SecondDish.findOne({ meal: mainDish })
         const dessertDaly = await Dessert.findOne({ meal: dessert })
         const bigDessertDaly = await Dessert.findOne({ meal: bigDessert })
-
+           
         const updatedMenu = await DalyMenu.findOneAndUpdate({},
             {
                 $set: {
@@ -55,8 +55,8 @@ const updateDalyMeny = async (req, res) => {
                     "menu2.dessert.meal": dessert,
                     "menu2.dessert.image": dessertDaly.image,
 
-                    "bigDessert.meal": bigDessert,
-                    "bigDessert.image": bigDessertDaly.image,
+                    "bigDessert.nameDessert.meal": bigDessert,
+                    "bigDessert.nameDessert.image": bigDessertDaly.image,
 
                     "date": moment().add(120, 'minutes').format("DD.MM.YYYY")
                 }
