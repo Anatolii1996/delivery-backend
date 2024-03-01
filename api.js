@@ -11,6 +11,7 @@ const sideDishesRouter = require("./routes/sideDish-router");
 const saladsRouter = require("./routes/salad-router");
 const dessertsRouter = require("./routes/dessert-router");
 const dalyMenuRouter = require("./routes/menu-routes");
+const ordersRouter = require("./routes/orders-router");
 
 // const imageRouter = require("./routes/image-router");
 
@@ -21,7 +22,7 @@ const app = express();
 app.use(express.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false, limit: '50mb'} ));
 app.use(cors());
-app.use(userRouter, firstDishesRouter, secondDishesRouter, sideDishesRouter, saladsRouter, dessertsRouter, dalyMenuRouter
+app.use(userRouter, firstDishesRouter, secondDishesRouter, sideDishesRouter, saladsRouter, dessertsRouter, dalyMenuRouter, ordersRouter
     // , imageRouter
     )
 
