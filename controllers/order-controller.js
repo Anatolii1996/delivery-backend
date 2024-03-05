@@ -8,7 +8,7 @@ const removeDepricatedOrder = async () => {
 
         await Order.deleteMany({ date: { $lt: currentDate } });
 
-        console.log("Устаревшие заказы успешно удалены.");
+        // console.log("Устаревшие заказы успешно удалены.");
     } catch (err) {
         handleError(res, err);
     }
