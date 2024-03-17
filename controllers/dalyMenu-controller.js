@@ -15,6 +15,7 @@ const getDalyMeny = async (req, res) => {
 };
 
 const updateDalyMeny = async (req, res) => {
+   
        
     try {
         const firstDish = req.body.firstDish
@@ -34,6 +35,8 @@ const updateDalyMeny = async (req, res) => {
         const dessertDaly = await Dessert.findOne({ meal: dessert })
         const bigDessertDaly = await Dessert.findOne({ meal: bigDessert })
            
+        // console.log(req.body)
+
         const updatedMenu = await DalyMenu.findOneAndUpdate({},
             {
                 $set: {
