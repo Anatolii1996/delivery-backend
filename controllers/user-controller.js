@@ -1,36 +1,19 @@
-const User = require("../models/user");
-const { handleError } = require("../helper")
-const bcrypt = require("bcrypt");
-const uuid = require("uuid")
+// const User = require("../models/user");
+const { handleError } = require("../helper");
+const { registration } = require("../service/user-service");
 
 const createUser = async (req, res) => {
-    console.log(req.body)
-    const candidate = await User.findOne({ email: req.body.email });
-    if (candidate) {
-        throw new Error("Користувач з такою адресою вже зарєестрований")
+    // console.log(req.body)
+    try {
+        const userData = await registration(req.body);
+        res.cookie("refreshToken", userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+        return res
+            .status(201)
+            .json(userData)
+    } catch (err) {
+        handleError(res, err);
     }
-    const hashPassword = await bcrypt.hash(req.body.password, 3);
-    const activationLink = uuid.v4()
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password: hashPassword,
-        tel: req.body.tel,
-        address: req.body.address,
-        activationLink: activationLink
-    });
-    // console.log(visit)
-    await user
-        .save()
-        .then((result) => {
-            // console.log(result)
-            res
-                .status(201)
-                .json(result)
 
-
-        })
-        .catch((err) => handleError(res, err));
 };
 
 const login = async (req, res, next) => {
