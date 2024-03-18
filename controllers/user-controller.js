@@ -1,9 +1,21 @@
 const User = require("../models/user");
 const { handleError } = require("../helper")
+const bcrypt = require("bcrypt");
 
 const createUser = async (req, res) => {
-    // console.log(req.body)
-    const user = new User(req.body);
+    console.log(req.body)
+    const candidate = await User.findOne({email: req.body.email});
+    if (candidate){
+        throw new Error("Користувач з такою адресою вже зарєестрований")
+    }
+    const hashPassword=await bcrypt.hash(req.body.password, 3);
+    const user = new User({
+        name:req.body.name,
+        email:req.body.email,
+        password:hashPassword,
+        tel:req.body.tel,
+        address:req.body.address
+    });
     // console.log(visit)
     await user
         .save()
@@ -12,6 +24,7 @@ const createUser = async (req, res) => {
             res
                 .status(201)
                 .json(result)
+
 
         })
         .catch((err) => handleError(res, err));
