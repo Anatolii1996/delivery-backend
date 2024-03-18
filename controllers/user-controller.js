@@ -17,6 +17,54 @@ const createUser = async (req, res) => {
         .catch((err) => handleError(res, err));
 };
 
+const login = async (req, res, next) => {
+    // console.log(req.body)
+    try{
+        
+    }catch(err){
+
+    }
+  
+};
+
+const logout = async (req, res, next) => {
+    // console.log(req.body)
+    try{
+        
+    }catch(err){
+        
+    }
+  
+};
+
+const activate = async (req, res, next) => {
+    // console.log(req.body)
+    try{
+        
+    }catch(err){
+        
+    }
+  
+};
+const refresh = async (req, res, next) => {
+    // console.log(req.body)
+    try{
+        
+    }catch(err){
+        
+    }
+  
+};
+const getUsers = async (req, res, next) => {
+    // console.log(req.body)
+    try{
+        res.json(["123","456"])
+    }catch(err){
+        
+    }
+  
+};
 
 
-module.exports = { createUser };
+
+module.exports = { createUser, login, logout, activate, refresh , getUsers};
