@@ -32,7 +32,7 @@ const userSchema = new Schema({
     },
     isActivated:{
         type: Boolean,
-        default: false
+        default: true
     },
     activationLink:String
 

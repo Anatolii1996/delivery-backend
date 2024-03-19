@@ -1,5 +1,5 @@
 const express = require('express');
-const {createUser,login, logout,refresh,activate, getUsers} = require("../controllers/user-controller");
+const {createUser,loginUser, logout,refresh,activate, getUsers} = require("../controllers/user-controller");
 
 
 const router = express.Router();
@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/new-user", createUser);
 
-router.post("/login", login);
+router.post("/login", loginUser);
 router.post("/logout", logout);
 router.get("/activate/:link", activate);
 router.get("/refresh", refresh);

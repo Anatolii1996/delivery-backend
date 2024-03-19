@@ -1,12 +1,13 @@
 // const User = require("../models/user");
 const { handleError } = require("../helper");
-const { registration } = require("../service/user-service");
+const { registration, login } = require("../service/user-service");
 
 const createUser = async (req, res) => {
     // console.log(req.body)
     try {
         const userData = await registration(req.body);
-        res.cookie("refreshToken", userData.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
+        // console.log(userData)
+        res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "None" });
         return res
             .status(201)
             .json(userData)
@@ -16,10 +17,15 @@ const createUser = async (req, res) => {
 
 };
 
-const login = async (req, res, next) => {
+const loginUser = async (req, res, next) => {
     // console.log(req.body)
     try {
-
+        const { email, password } = req.body;
+        const userData = await login(email, password)
+        res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "None" });
+        return res
+            .status(201)
+            .json(userData)
     } catch (err) {
 
     }
@@ -66,4 +72,4 @@ const getUsers = async (req, res, next) => {
 
 
 
-module.exports = { createUser, login, logout, activate, refresh, getUsers };
+module.exports = { createUser, loginUser, logout, activate, refresh, getUsers };

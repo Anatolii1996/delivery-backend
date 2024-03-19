@@ -32,4 +32,23 @@ const registration = async (body) => {
     }
 }
 
-module.exports ={registration}
+const login = async (email, password) => {
+    const user = await User.findOne({ email });
+    if (!user) {
+        throw new Error("Користувач не був знайдений")
+    }
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+    if (!isPasswordValid) {
+        throw new Error("Не правильний пароль")
+    }
+    const userDto = new UserDto(user);
+    const tokens = generateTokens({ ...userDto })
+    await saveToken(userDto.id, tokens.refreshToken);
+
+    return {
+        ...tokens,
+        user: userDto,
+    }
+}
+
+module.exports = { registration, login }
