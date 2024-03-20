@@ -37,6 +37,5 @@ const userSchema = new Schema({
     activationLink:String
 
 });
-
 const User = mongoose.model("User", userSchema);
 module.exports = User;

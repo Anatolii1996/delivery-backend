@@ -22,6 +22,7 @@ const loginUser = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const userData = await login(email, password)
+        // console.log(userData)
         res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "None" });
         return res
             .status(201)
@@ -32,10 +33,11 @@ const loginUser = async (req, res, next) => {
 
 };
 
-const logout = async (req, res, next) => {
-    // console.log(req.body)
+const checkUser = async (req, res) => {
+    // console.log(req.headers.authorization.split(" ")[1])
+    const token = req.headers.authorization.split(" ")[1]
     try {
-
+        res.status(200)
     } catch (err) {
 
     }
@@ -72,4 +74,4 @@ const getUsers = async (req, res, next) => {
 
 
 
-module.exports = { createUser, loginUser, logout, activate, refresh, getUsers };
+module.exports = { createUser, loginUser, checkUser, activate, refresh, getUsers };

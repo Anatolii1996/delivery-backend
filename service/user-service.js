@@ -21,7 +21,7 @@ const registration = async (body) => {
         address: body.address,
         activationLink: activationLink
     });
-    await sendActivationMail(body.email, activationLink)
+    // await sendActivationMail(body.email, activationLink)
     const userDto = new UserDto(user);
     const tokens = generateTokens({ ...userDto })
     await saveToken(userDto.id, tokens.refreshToken);
