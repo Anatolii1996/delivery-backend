@@ -1,13 +1,20 @@
 // const User = require("../models/user");
 const { handleError } = require("../helper");
 const { registration, login } = require("../service/user-service");
+const { addDays } = require('date-fns');
+
+const expirationDate = addDays(new Date(), 30);
 
 const createUser = async (req, res) => {
     // console.log(req.body)
     try {
         const userData = await registration(req.body);
         // console.log(userData)
-        res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "None" });
+        res.cookie("refreshToken", userData.refreshToken,{ 
+            expires: expirationDate,
+            httpOnly: true, 
+            sameSite: "None" 
+        });
         return res
             .status(201)
             .json(userData)
@@ -23,7 +30,11 @@ const loginUser = async (req, res, next) => {
         const { email, password } = req.body;
         const userData = await login(email, password)
         // console.log(userData)
-        res.cookie("refreshToken", userData.refreshToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: "None" });
+        res.cookie("refreshToken", userData.refreshToken,{ 
+            expires: expirationDate,
+            httpOnly: true, 
+            sameSite: "None" 
+        });
         return res
             .status(201)
             .json(userData)
@@ -36,6 +47,8 @@ const loginUser = async (req, res, next) => {
 const checkUser = async (req, res) => {
     // console.log(req.headers.authorization.split(" ")[1])
     const token = req.headers.authorization.split(" ")[1]
+    // const {refreshToken} = req.body;
+    console.log(token)
     try {
         res.status(200)
     } catch (err) {

@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const uuid = require("uuid");
-const { sendActivationMail } = require("../service/mail-service");
 const { generateTokens, saveToken } = require("../service/token-service")
 const UserDto = require("../dtos/user-dto")
 

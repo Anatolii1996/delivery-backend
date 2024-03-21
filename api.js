@@ -20,6 +20,7 @@ const dalyOrdersRouter = require("./routes/dalyOrders-router");
 const PORT = 3002;
 
 const app = express();
+app.use(cookieParser());
 
 app.use(express.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
@@ -27,7 +28,7 @@ app.use(cors({
     credentials: true,
     origin:process.env.FRONTEND_URL
 }));
-app.use(cookieParser());
+
 app.use(userRouter, firstDishesRouter, secondDishesRouter, sideDishesRouter, saladsRouter, dessertsRouter, dalyMenuRouter, ordersRouter, dalyOrdersRouter
     // , imageRouter
 )
