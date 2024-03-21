@@ -14,7 +14,6 @@ const dessertsRouter = require("./routes/dessert-router");
 const dalyMenuRouter = require("./routes/menu-routes");
 const ordersRouter = require("./routes/orders-router");
 const dalyOrdersRouter = require("./routes/dalyOrders-router");
-const dalyOrdersRouter = require("./routes/dalyOrders-router");
 
 // const imageRouter = require("./routes/image-router");
 
