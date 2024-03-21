@@ -5,11 +5,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -17,7 +19,8 @@ const userSchema = new Schema({
     },
     tel: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
     },
     address: {
         type: String,
@@ -26,9 +29,13 @@ const userSchema = new Schema({
     orderTime: {
         type: Date,
         default: () => moment().add(120, 'minutes').toDate()
-    }
+    },
+    isActivated:{
+        type: Boolean,
+        default: true
+    },
+    activationLink:String
 
 });
-
 const User = mongoose.model("User", userSchema);
 module.exports = User;
