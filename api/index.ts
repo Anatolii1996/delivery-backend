@@ -38,9 +38,9 @@ const start = async () => {
         await mongoose
             .connect(process.env.URL)
             .then(() => console.log('Connected to MongoDB'))
-            .catch((err) => console.log(`DB connection error: ${err}`));
+            .catch((err:any) => console.log(`DB connection error: ${err}`));
 
-        app.listen(PORT, (err) => {
+        app.listen(PORT, (err?: Error) => {
             err ? console.log(err) : console.log(`Listening port ${PORT}`);
         });
     } catch (e) {
@@ -49,3 +49,4 @@ const start = async () => {
 };
 
 start();
+export default app;
