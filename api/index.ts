@@ -5,15 +5,15 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
-const userRouter = require("./routes/user-routes");
-const firstDishesRouter = require("./routes/firstDish-router");
-const secondDishesRouter = require("./routes/secondDish-router");
-const sideDishesRouter = require("./routes/sideDish-router");
-const saladsRouter = require("./routes/salad-router");
-const dessertsRouter = require("./routes/dessert-router");
-const dalyMenuRouter = require("./routes/menu-routes");
-const ordersRouter = require("./routes/orders-router");
-const dalyOrdersRouter = require("./routes/dalyOrders-router");
+const userRouter = require("../routes/user-routes");
+const firstDishesRouter = require("../routes/firstDish-router");
+const secondDishesRouter = require("../routes/secondDish-router");
+const sideDishesRouter = require("../routes/sideDish-router");
+const saladsRouter = require("../routes/salad-router");
+const dessertsRouter = require("../routes/dessert-router");
+const dalyMenuRouter = require("../routes/menu-routes");
+const ordersRouter = require("../routes/orders-router");
+const dalyOrdersRouter = require("../routes/dalyOrders-router");
 
 // const imageRouter = require("./routes/image-router");
 
